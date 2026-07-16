@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b12">
+<meta property="og:title" content="دعوة زفاف أنس ومريم">
+<meta property="og:description" content="يسرّنا دعوتكم لمشاركتنا فرحتنا يوم 28 أغسطس 2026">
+<meta property="og:image" content="assets/images/cover-placeholder.svg">
+<title>أنس ومريم | دعوة زفاف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<div id="cinematic">
+  <canvas id="stars"></canvas>
+  <div class="moon"></div>
+  <div class="cinematic-copy">
+    <p class="cinematic-small">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيم</p>
+    <p class="cinematic-verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
+    <div class="cinematic-names">أنس <span>&</span> مريم</div>
+    <button id="enterBtn">افتح الدعوة</button>
+  </div>
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="assets/music/wedding.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle" class="music-toggle" aria-label="تشغيل أو إيقاف الموسيقى">♫</button>
+
+<main id="mainContent">
+  <section class="hero section">
+    <div class="gold-orbit orbit-one"></div>
+    <div class="gold-orbit orbit-two"></div>
+    <div class="hero-inner reveal">
+      <div class="eyebrow">دعوة زفاف</div>
+      <h1>أنس <span>&</span> مريم</h1>
+      <p class="lead">بكل الحب، يسعدنا أن نشارككم بداية فصل جديد من حكايتنا، ونتشرّف بحضوركم لتكتمل فرحتنا بوجودكم.</p>
+      <div class="date-lockup">
+        <span>الجمعة</span>
+        <strong>28</strong>
+        <span>أغسطس 2026</span>
+      </div>
+      <a href="#countdown" class="scroll-cue">اكتشف التفاصيل</a>
+    </div>
+  </section>
+
+  <section id="countdown" class="section dark-section">
+    <div class="section-inner reveal">
+      <div class="section-label">نعد الأيام معكم</div>
+      <h2>تبقّى على موعدنا</h2>
+      <div class="countdown-grid">
+        <div><strong id="days">00</strong><span>يوم</span></div>
+        <div><strong id="hours">00</strong><span>ساعة</span></div>
+        <div><strong id="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong id="seconds">00</strong><span>ثانية</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="section-label">تفاصيل المناسبة</div>
+      <h2>موعدنا مع الفرح</h2>
+      <div class="details-grid">
+        <article><span>◷</span><h3>الوقت</h3><p>الساعة السابعة مساءً</p></article>
+        <article><span>◇</span><h3>التاريخ</h3><p>الجمعة، 28 أغسطس 2026</p></article>
+        <article><span>⌖</span><h3>المكان</h3><p>قاعة عود ميثاء<br>موڤنبيك بر دبي</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section venue-section">
+    <div class="venue-card reveal">
+      <div>
+        <div class="section-label">الموقع</div>
+        <h2>Oud Metha Ballroom</h2>
+        <p>موڤنبيك للشقق الفندقية بر دبي، عود ميثاء، دبي</p>
+      </div>
+      <div class="actions">
+        <a class="gold-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Oud+Metha+Ballroom+Movenpick+Bur+Dubai">فتح Google Maps</a>
+        <button id="calendarBtn" class="ghost-btn">إضافة إلى التقويم</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section photo-section">
+    <div class="section-inner reveal">
+      <div class="section-label">صورتنا</div>
+      <h2>لحظة من حكايتنا</h2>
+      <div class="photo-frame">
+        <img src="assets/images/cover-placeholder.svg" alt="صورة أنس ومريم">
+      </div>
+      <p class="photo-note">استبدل هذه الصورة لاحقاً بصورة من اختياركم مع نفس اسم الملف أو عدّل المسار داخل الصفحة.</p>
+    </div>
+  </section>
+
+  <section class="section rsvp-section">
+    <div class="rsvp-card reveal">
+      <div class="section-label">RSVP</div>
+      <h2>تأكيد الحضور</h2>
+      <p>يسعدنا معرفة حضوركم الكريم لنستعد لاستقبالكم.</p>
+      <form id="rsvpForm">
+        <label>الاسم الكامل<input name="name" required></label>
+        <label>الحضور
+          <select name="attendance" required>
+            <option value="">اختر</option>
+            <option>نعم، سأحضر بكل سرور</option>
+            <option>أعتذر عن الحضور</option>
+          </select>
+        </label>
+        <label>عدد الحضور<input name="guests" type="number" min="1" max="10" value="1"></label>
+        <label>رسالة للعروسين<textarea name="message"></textarea></label>
+        <button class="gold-btn submit" type="submit">إرسال الرد</button>
+      </form>
+      <div id="successMsg" class="success-msg">شكراً لك ♡ تم حفظ ردك في النسخة التجريبية.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-names">أنس & مريم</div>
+    <div>وجودكم معنا هو أجمل هدية</div>
+    <small>28 • 08 • 2026</small>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
