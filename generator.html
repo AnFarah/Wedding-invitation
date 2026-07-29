@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مولّد روابط الدعوات</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+body{margin:0;padding:30px;background:#f2ece4;color:#28231f;font-family:Arial,sans-serif}
+main{max-width:960px;margin:auto;background:white;border-radius:24px;padding:30px;box-shadow:0 18px 60px rgba(55,40,25,.12)}
+input,button{width:100%;padding:14px;margin-top:10px;border-radius:12px;border:1px solid #cfbea5;font-size:15px}
+button{background:#29241f;color:white}
+.actions{display:flex;gap:10px}.actions button{display:none}
+table{width:100%;border-collapse:collapse;margin-top:22px;min-width:760px}
+th,td{padding:10px;border-bottom:1px solid #ece3d8;text-align:right}
+.wrap{overflow:auto}
+</style></head>
+<body><main>
+<h1>مولّد روابط دعوة أنس ومريم</h1>
+<p>Excel: عمود <b>Name</b> أو <b>الاسم</b>، وعمود اختياري <b>MaxGuests</b> أو <b>عدد الحضور</b>.</p>
+<input id="baseUrl" placeholder="https://anfarah.github.io/Wedding-invitation/">
+<input id="file" type="file" accept=".xlsx,.xls,.csv">
+<button id="make">توليد الأكواد</button>
+<div class="actions"><button id="csvBtn">تحميل CSV</button><button id="jsonBtn">تحميل guests.json</button></div>
+<div class="wrap"><table><thead><tr><th>#</th><th>الاسم</th><th>العدد</th><th>الكود</th><th>الرابط</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main>
+<script>
+let output=[],map={};
+function code(){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let s="";const a=new Uint32Array(6);crypto.getRandomValues(a);a.forEach(n=>s+=chars[n%chars.length]);return s}
+function dl(content,name,type){const b=new Blob([content],{type}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click()}
+make.onclick=async()=>{let base=baseUrl.value.trim(),f=file.files[0];if(!base||!f)return alert("اكتب الرابط وارفع الملف");if(!base.endsWith("/"))base+="/";const wb=XLSX.read(await f.arrayBuffer()),data=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""});output=[];map={};rows.innerHTML="";data.forEach((r,i)=>{const n=String(r.Name||r.name||r["الاسم"]||r["اسم"]||"").trim();if(!n)return;let c=code();while(map[c])c=code();const m=Number(r.MaxGuests||r["عدد الحضور"]||1)||1;const link=base+"?id="+c;map[c]={name:n,maxGuests:m};output.push({No:i+1,Name:n,MaxGuests:m,Code:c,Link:link});rows.innerHTML+=`<tr><td>${i+1}</td><td>${n}</td><td>${m}</td><td>${c}</td><td><a href="${link}" target="_blank">${link}</a></td></tr>`});csvBtn.style.display=jsonBtn.style.display=output.length?"block":"none"};
+csvBtn.onclick=()=>dl("\\ufeff"+XLSX.utils.sheet_to_csv(XLSX.utils.json_to_sheet(output)),"wedding-links.csv","text/csv");
+jsonBtn.onclick=()=>dl(JSON.stringify(map,null,2),"guests.json","application/json");
+</script></body></html>
