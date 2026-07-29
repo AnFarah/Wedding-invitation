@@ -1,1 +1,0 @@
-ارفع كل الملفات إلى GitHub. افتح generator.html لتوليد روابط الأسماء من Excel. ضع الموسيقى داخل assets/music باسم wedding.mp3.
